@@ -40,5 +40,5 @@ func main() {
 	app.Use(middleware.GormMiddleware(databaseConn))
 
 	routes.UsersRouter(app, databaseConn)
-	app.Listen(":8080")
+	app.Listen("0.0.0.0:8080")
 }

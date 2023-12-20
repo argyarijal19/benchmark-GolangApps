@@ -12,7 +12,7 @@ func UsersRouter(router fiber.Router, database *gorm.DB) {
 	usersTable := repository.UserTable(database)
 
 	usersHandler := handlers.UsersHandlers{UserTable: usersTable}
-	usersRouter := router.Group("users")
+	usersRouter := router.Group("/users")
 	usersRouter.Get("/", usersHandler.GetAllUsers)
 	usersRouter.Post("/register", usersHandler.InsertDataUsers)
 }
