@@ -1,22 +1,12 @@
-# fly.toml app configuration file generated for benchmark-golangapps-summer-brook-1010 on 2023-12-21T02:36:33+07:00
+# fly.toml app configuration file generated for benchmark-golangapps on 2023-12-29T16:22:18+07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "benchmark-golangapps-summer-brook-1010"
+app = "benchmark-golangapps"
 primary_region = "sin"
 
 [build]
-  builder = "paketobuildpacks/builder:base"
-  buildpacks = ["gcr.io/paketo-buildpacks/go"]
-
-[env]
-  PORT = "8080"
-  DB_USER = "avnadmin"
-  DB_PASSWORD = "AVNS_JpBPV4KWOMQhv9Q5tXR"
-  DB_HOST = "mysql-6502b20-bosargya-3aa1.a.aivencloud.com"
-  DB_NAME = "defaultdb"
-  DB_PORT = "16136"
 
 [http_service]
   internal_port = 8080
@@ -26,7 +16,14 @@ primary_region = "sin"
   min_machines_running = 0
   processes = ["app"]
 
+[env]
+  DB_USER="non_root_user"
+  DB_PASSWORD="password"
+  DB_HOST="mysql-bimbingan.internal"
+  DB_NAME="inventory"
+  DB_PORT=3306
+  
 [[vm]]
-  cpu_kind = "shared"
+  cpu_kind = "performance"
   cpus = 1
-  memory_mb = 1024
+  memory_mb = 2048
